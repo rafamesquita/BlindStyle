@@ -1,0 +1,32 @@
+.historico {
+    background-color: #b1afaf;
+    flex: 1 1 auto;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+    padding: 20px;
+  
+    .grid-container {
+      display: grid;
+      gap: 20px;
+      width: 100%;
+      max-width: 900px;
+      grid-template-columns: repeat(3, 1fr);
+  
+      @media (max-width: 650px) {
+        grid-template-columns: 1fr;
+      }
+    }
+}  
+  
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: #b1afaf;
+}

@@ -9,4 +9,9 @@ import { Component } from '@angular/core';
 })
 export class FooterComponent {
 
+  openGit() {
+    const url = 'https://github.com/rafamesquita/BlindStyle';
+    window.open(url, '_blank');
+  }
+
 }

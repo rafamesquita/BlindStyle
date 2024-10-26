@@ -1,17 +1,12 @@
-.header {
-    font-family: Arial, sans-serif;
+.title {
+    color: white;
+    cursor: pointer;
     font-style: italic;
     font-size: 50px;
-    display: flex;
-    justify-content: center;
-    padding-top: 15px;
-    background-color: black;
-    color: white;
 }
 
-
 @media (max-width: 480px) {
-    .header {
+    .title {
         font-size: 30px;
     }
 }
