@@ -1,16 +1,20 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ModalRoupaComponent } from "../modal-roupa/modal-roupa.component";
 
 @Component({
   selector: 'app-roupa-hist',
   standalone: true,
-  imports: [CommonModule ],
+  imports: [CommonModule, ModalRoupaComponent],
   templateUrl: './roupa-hist.component.html',
   styleUrl: './roupa-hist.component.scss'
 })
 export class RoupaHistComponent implements OnInit{
 
   @Input() data: any
+
+  modal: boolean = false
+
   jaqueta: boolean = false
   calca: boolean = false
   blusa: boolean = false
@@ -33,6 +37,10 @@ export class RoupaHistComponent implements OnInit{
     }   
   }
 
+  openModal() {
+    this.modal = !this.modal
+  }
+  
   openImg(base64: string, contentType: string = 'image/jpg') {
     const byteCharacters = atob(base64);
     const byteNumbers = Array.from(byteCharacters).map(char => char.charCodeAt(0));

@@ -1,4 +1,4 @@
-<div class="descricao-roupa-container">
+<div class="descricao-roupa-container" (click)="openModal()">
 
   <!-- Ícone de roupa -->
   <div class="icon">
@@ -54,5 +54,12 @@
     </svg>
   </div>
 
+</div>
+
+<div *ngIf="modal" class="backdrop" (click)="openModal()">
+  <div class="modal-container" (click)="$event.stopPropagation()">
+    <button class="close-button" (click)="openModal()">✖</button>
+    <app-modal-roupa></app-modal-roupa>
+  </div>
 </div>
   
