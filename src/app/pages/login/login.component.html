@@ -9,11 +9,14 @@
             </svg>
             <h1>Login</h1>
         </div>
-        <form>
-            <input type="email" placeholder="Email" required>
-            <input type="password" placeholder="Senha" required>
+        <form (ngSubmit)="home()">
+            <input type="text" placeholder="text" [(ngModel)]="username" name="username" required>
+            <input type="password" placeholder="Senha" [(ngModel)]="password" name="password" required>
             <button (click)="home()" type="submit">Entrar</button>
         </form>
+        <div class="error-message">
+            <p>{{ errorMessage }}</p> 
+          </div>
     </div>
     <div class="footer">
         <app-footer></app-footer>
