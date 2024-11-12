@@ -10,7 +10,7 @@
             <h1>Login</h1>
         </div>
         <form (ngSubmit)="home()">
-            <input type="text" placeholder="text" [(ngModel)]="username" name="username" required>
+            <input type="text" placeholder="Nome de usuário" [(ngModel)]="username" name="username" required>
             <input type="password" placeholder="Senha" [(ngModel)]="password" name="password" required>
             <button (click)="home()" type="submit">Entrar</button>
         </form>

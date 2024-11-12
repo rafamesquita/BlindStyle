@@ -1,0 +1,25 @@
+<div class="camera">
+    <div class="header">
+        <app-header title="Câmera"></app-header>
+    </div>
+
+    <div class="main-content">
+        <div class="instructions">
+            <p>Basta clicar no botão abaixo para habilitar a câmera!</p>
+            <!-- Botão para solicitar acesso à câmera -->
+            <button (click)="startCamera()">Solicitar Acesso à Câmera</button>
+            <!-- Botão para desligar a câmera -->
+            <button (click)="stopCamera()">Desligar a Câmera</button>
+        </div>
+
+        <!-- Vídeo -->
+        <div class="content" *ngIf="isCameraActive">
+            <video #videoElement width="95%" height="95%" autoplay></video>
+        </div>
+    </div>
+
+    <!-- Mensagem de erro -->
+    <div *ngIf="errorMessage" class="error-message">
+        <p>{{ errorMessage }}</p>
+    </div>
+</div>
