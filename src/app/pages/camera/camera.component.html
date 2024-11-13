@@ -18,6 +18,9 @@
         </div>
     </div>
 
+    <!-- Botão para tirar a foto -->
+    <button (click)="takePhoto()">Tirar foto</button>
+
     <!-- Mensagem de erro -->
     <div *ngIf="errorMessage" class="error-message">
         <p>{{ errorMessage }}</p>

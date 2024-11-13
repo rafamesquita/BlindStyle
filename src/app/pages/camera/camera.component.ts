@@ -12,9 +12,11 @@ import { CommonModule } from '@angular/common';
 export class CameraComponent implements AfterViewInit {
 
   @ViewChild('videoElement') videoElement: ElementRef<HTMLVideoElement> | undefined;
+  @ViewChild('canvasElement') canvasElement!: ElementRef;
 
   isCameraActive = false;  // Para controlar se a câmera está ativa
   errorMessage: string | null = null;
+  photoBase64: string | null = null;
 
   constructor() {}
 
@@ -56,6 +58,27 @@ export class CameraComponent implements AfterViewInit {
       tracks.forEach(track => track.stop());
       this.videoElement.nativeElement.srcObject = null;
       this.isCameraActive = false;
+    }
+  }
+
+   // Método para tirar uma foto e converter para base64
+   takePhoto(): void {
+    if (this.isCameraActive && this.videoElement && this.canvasElement) {
+      const video = this.videoElement.nativeElement as HTMLVideoElement;
+      const canvas = this.canvasElement.nativeElement as HTMLCanvasElement;
+      const context = canvas.getContext('2d');
+
+      // Ajuste o tamanho do canvas para o tamanho do vídeo
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+
+      // Desenhar o quadro atual do vídeo no canvas
+      context?.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+      // Converter o conteúdo do canvas para base64
+      this.photoBase64 = canvas.toDataURL('image/png');
+      console.log('Foto em Base64: ', this.photoBase64);
+      
     }
   }
 }
