@@ -9,8 +9,12 @@ import { AuthService } from './auth/auth.service';
 export class ApiService {
   private apiUrl = environment.apiUrl;
 
-  constructor(private http: HttpClient,private authService: AuthService) {}
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService
+  ) {}
 
+  //Serviço para pegar as roupas salvas
   getClothes() {
     const accessToken = this.authService.getAccessToken();
     let headers = new HttpHeaders();

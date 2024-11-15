@@ -1,3 +1,4 @@
-<div (click)="login()">
-    <span class="title">{{title}}</span>
+<div class="header" [ngClass]="{'default-style': title === 'BlindStyle'}">
+    <div (click)="back()" class="back">voltar</div>
+    <span (click)="login()" class="title">{{title}}</span>
 </div>

@@ -1,9 +1,9 @@
+<app-header title="Histórico"></app-header>
 <div class="historico">
-    <div class="header">
-        <app-header title="Histórico"></app-header>
-    </div>
     <!-- Box com as roupas -->
-    <div class="grid-container" *ngFor="let roupa of clothes">
-        <app-roupa-hist [data]="roupa"></app-roupa-hist>
-    </div>
+     <div class="grid-container">
+        <div *ngFor="let roupa of clothes">
+            <app-roupa-hist [data]="roupa"></app-roupa-hist>
+        </div>
+     </div>
 </div>

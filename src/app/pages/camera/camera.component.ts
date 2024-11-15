@@ -1,11 +1,12 @@
 import { Component, ViewChild, ElementRef, AfterViewInit  } from '@angular/core';
 import { HeaderComponent } from '../../components/header/header.component';
 import { CommonModule } from '@angular/common';
+import { BtnComponent } from "../../components/btn/btn.component";
 
 @Component({
   selector: 'app-camera',
   standalone: true,
-  imports: [HeaderComponent, CommonModule],
+  imports: [HeaderComponent, CommonModule, BtnComponent],
   templateUrl: './camera.component.html',
   styleUrl: './camera.component.scss'
 })

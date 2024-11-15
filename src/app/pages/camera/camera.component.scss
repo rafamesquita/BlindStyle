@@ -10,16 +10,6 @@
     padding: 20px;
 }
 
-.header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-    background-color: #b1afaf;
-}
-
 .main-content {
     display: flex;
     flex-direction: column;
@@ -48,7 +38,7 @@ button {
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    margin-top: 20px; /* Espaçamento entre os botões e o vídeo */
+    margin-bottom: 20px;
 }
 
 video {
@@ -61,4 +51,12 @@ video {
     color: red;
     margin-top: 20px;
     text-align: center;
+}
+
+
+@media (max-width: 375px) {
+    .content {
+        width: 200px; 
+        height: 200px;
+    }
 }

@@ -1,8 +1,25 @@
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: #b1afaf;
+    &.default-style {
+        background-color: transparent;
+    }
+}
+
 .title {
     color: white;
     cursor: pointer;
     font-style: italic;
     font-size: 50px;
+}
+
+.back {
+    justify-items: auto;
 }
 
 @media (max-width: 480px) {
