@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ModalRoupaComponent } from "../modal-roupa/modal-roupa.component";
+import { TextToSpeechService } from './../../services/text-speech/text-to-speech.service';
 
 @Component({
   selector: 'app-roupa-hist',
@@ -19,6 +20,8 @@ export class RoupaHistComponent implements OnInit{
   calca: boolean = false
   blusa: boolean = false
   vestido: boolean = false
+
+  constructor(private ttsService: TextToSpeechService) {}
 
   ngOnInit() {
     switch (this.data.nome) {
@@ -62,5 +65,9 @@ export class RoupaHistComponent implements OnInit{
     } else {
         console.error("Elemento com ID 'imageContainer' não encontrado.");
     }
+  }
+
+  onSpeak(text: string): void {
+    this.ttsService.speak(text);
   }
 }
