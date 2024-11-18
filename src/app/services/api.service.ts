@@ -37,4 +37,9 @@ export class ApiService {
     const payload = { input: parametro}
     return this.http.post(`${this.apiUrl}/api/v1/description/description/`, payload);
   }
+
+  registerUser(username: string, password: string) {
+    const payload = { username: username, password: password}
+    return this.http.post(`${this.apiUrl}/api/v1/users/register_user`, payload);
+  }
 }
