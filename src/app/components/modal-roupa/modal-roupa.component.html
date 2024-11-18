@@ -1,1 +1,11 @@
-<p>modal-roupa works!</p>
+<div class="modal-overlay">
+    <div class="modal">
+        <button class="close-button" onclick="closeModal()">✖</button>
+        <div class="modal-title">{{data.name}}</div>
+        <!-- Imagem convertida de Base64 -->
+        <img [src]="this.data.image_url" class="modal-image" />
+        <div class="modal-description">
+            {{data.description}}
+        </div>
+    </div>
+</div>
