@@ -2,6 +2,7 @@ import { Component, ViewChild, ElementRef, AfterViewInit  } from '@angular/core'
 import { HeaderComponent } from '../../components/header/header.component';
 import { CommonModule } from '@angular/common';
 import { BtnComponent } from "../../components/btn/btn.component";
+import { ApiService } from './../../services/api.service';
 
 @Component({
   selector: 'app-camera',
@@ -12,6 +13,7 @@ import { BtnComponent } from "../../components/btn/btn.component";
 })
 export class CameraComponent implements AfterViewInit {
 
+  prediction: any
   @ViewChild('videoElement') videoElement: ElementRef<HTMLVideoElement> | undefined;
   @ViewChild('canvasElement') canvasElement!: ElementRef;
 
@@ -19,7 +21,7 @@ export class CameraComponent implements AfterViewInit {
   errorMessage: string | null = null;
   photoBase64: string | null = null;
 
-  constructor() {}
+  constructor(private ApiService: ApiService) {}
 
   ngAfterViewInit(): void {
     // Verificar se o elemento de vídeo está sendo referenciado corretamente
@@ -62,6 +64,18 @@ export class CameraComponent implements AfterViewInit {
     }
   }
 
+  getDescription(img: string) {
+    this.ApiService.getDescription(img).subscribe({
+      next: (res)=>{
+        this.prediction = res
+        console.log('Descrição: ', this.prediction);
+      },
+      error: (error)=>{
+        console.error(error)
+      }
+    })
+  }
+
    // Método para tirar uma foto e converter para base64
    takePhoto(): void {
     if (this.isCameraActive && this.videoElement && this.canvasElement) {
@@ -78,6 +92,8 @@ export class CameraComponent implements AfterViewInit {
 
       // Converter o conteúdo do canvas para base64
       this.photoBase64 = canvas.toDataURL('image/png');
+      var teste = this.getDescription(this.photoBase64);
+      
       console.log('Foto em Base64: ', this.photoBase64);
       
     }

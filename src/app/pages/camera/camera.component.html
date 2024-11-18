@@ -13,6 +13,9 @@
             <video #videoElement width="100%" height="100%" autoplay></video>
         </div>
 
+        <!-- Canvas para capturar o quadro do vídeo -->
+        <canvas #canvasElement style="display: none;"></canvas>
+
         <!-- Botão para tirar a foto -->
         <app-btn label="Tirar foto" from="cam" (click)="takePhoto()"></app-btn>
     </div>

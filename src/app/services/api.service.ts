@@ -23,4 +23,9 @@ export class ApiService {
     }
     return this.http.get(`${this.apiUrl}/api/v1/items/get_item_list`,{ headers });
   }
+
+  getDescription(parametro: string) {
+    const payload = { input: parametro}
+    return this.http.post(`${this.apiUrl}/api/v1/description/description/`, payload);
+  }
 }
