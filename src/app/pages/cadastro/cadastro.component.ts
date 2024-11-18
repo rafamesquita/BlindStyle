@@ -27,8 +27,8 @@ export class CadastroComponent {
     this.registerUser(this.username, this.password);
   }
 
-  registerUser(user: string, password: string) {
-    this.ApiService.registerUser(user, password).subscribe({
+  registerUser(username: string, password: string) {
+    this.ApiService.registerUser(username, password).subscribe({
       next: (res)=>{
         this.user = res
         console.log(this.user);
