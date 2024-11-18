@@ -59,7 +59,7 @@
 <div *ngIf="modal" class="backdrop" (click)="openModal();$event.stopPropagation()">
   <div class="modal-container">
     <button class="close-button" (click)="openModal()">✖</button>
-    <app-modal-roupa></app-modal-roupa>
+    <app-modal-roupa [data] = data></app-modal-roupa>
   </div>
 </div>
   

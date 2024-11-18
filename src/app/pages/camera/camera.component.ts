@@ -95,6 +95,7 @@ export class CameraComponent implements AfterViewInit {
       var teste = this.getDescription(this.photoBase64);
       
       console.log('Foto em Base64: ', this.photoBase64);
+      video.pause();
       
     }
   }
