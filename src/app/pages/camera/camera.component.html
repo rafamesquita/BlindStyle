@@ -25,3 +25,7 @@
         <p>{{ errorMessage }}</p>
     </div>
 </div>
+
+<div *ngIf="modal" class="backdrop" (click)="openModal();$event.stopPropagation()">
+    <app-modal-roupa [data] = "this.prediction"></app-modal-roupa>
+</div>

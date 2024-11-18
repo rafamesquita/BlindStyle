@@ -3,11 +3,12 @@ import { HeaderComponent } from '../../components/header/header.component';
 import { CommonModule } from '@angular/common';
 import { BtnComponent } from "../../components/btn/btn.component";
 import { ApiService } from './../../services/api.service';
+import { ModalRoupaComponent } from '../../components/modal-roupa/modal-roupa.component';
 
 @Component({
   selector: 'app-camera',
   standalone: true,
-  imports: [HeaderComponent, CommonModule, BtnComponent],
+  imports: [HeaderComponent, CommonModule, BtnComponent, ModalRoupaComponent],
   templateUrl: './camera.component.html',
   styleUrl: './camera.component.scss'
 })
@@ -20,6 +21,8 @@ export class CameraComponent implements AfterViewInit {
   isCameraActive = false;  // Para controlar se a câmera está ativa
   errorMessage: string | null = null;
   photoBase64: string | null = null;
+
+  modal: boolean = false
 
   constructor(private ApiService: ApiService) {}
 
@@ -96,7 +99,16 @@ export class CameraComponent implements AfterViewInit {
       
       console.log('Foto em Base64: ', this.photoBase64);
       video.pause();
+
+      setTimeout(() => {
+        this.modal = !this.modal
+      }, 5000);
       
     }
   }
+
+  openModal() {
+    this.modal = !this.modal
+  }
+  
 }
