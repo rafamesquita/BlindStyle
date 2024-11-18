@@ -8,9 +8,9 @@
             <h1>Cadastro</h1>
         </div>
         <form>
-            <input type="email" placeholder="Email" required>
-            <input type="password" placeholder="Senha" required>
-            <button (click)="home()" type="submit">Cadastrar</button>
+            <input type="email" placeholder="Email" [(ngModel)]="username" name = "username" required>
+            <input type="password" placeholder="Senha" [(ngModel)]="password" name = "password" required>
+            <button (click)="register()" type="submit">Cadastrar</button>
             <button (click)="login()" type="submit">Já possui uma conta</button>
         </form>
     </div>
