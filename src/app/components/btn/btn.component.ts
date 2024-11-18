@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { TextToSpeechService } from './../../services/text-speech/text-to-speech.service';
 
 @Component({
   selector: 'app-btn',
@@ -14,7 +15,10 @@ export class BtnComponent {
   @Input() label: string = ''
   @Input() from: string = ''
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private ttsService: TextToSpeechService,
+  ) {}
 
   goTo(){
     if(this.label=='Histórico')
@@ -24,4 +28,9 @@ export class BtnComponent {
     if(this.label=='Galeria')
       this.router.navigate(['/galeria']);
   }
+
+  onSpeak(text: string): void {
+    this.ttsService.speak(text);
+  }
+
 }
