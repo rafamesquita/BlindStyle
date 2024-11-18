@@ -1,0 +1,24 @@
+<app-header title="Galeria"></app-header>
+<div class="galeria">
+    <div class="main-content">
+        <div class="instructions">
+            <!-- Botão para solicitar acesso a galeria -->
+            <app-btn label="Solicitar Acesso a Galeria" from="cam" (click)="openGallery()"></app-btn>
+        </div>
+
+        <input
+        type="file"
+        #fileInput
+        (change)="onFileSelected($event)"
+        accept="image/*"
+        style="display: none;"/>
+
+        <!-- Foto -->
+        <div class="content">
+            <img [src]="selectedImage" width="300"/>
+        </div>
+
+        <!-- Botão para enviar a foto -->
+        <app-btn label="Enviar foto" from="cam" (click)="convertToBase64()"></app-btn>
+    </div>
+</div>
