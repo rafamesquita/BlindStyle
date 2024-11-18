@@ -2,6 +2,7 @@ import { Component, ViewChild, ElementRef, AfterViewInit, Injectable } from '@an
 import { HeaderComponent } from '../../components/header/header.component';
 import { CommonModule } from '@angular/common';
 import { BtnComponent } from "../../components/btn/btn.component";
+import { ApiService } from './../../services/api.service';
 
 
 @Component({
@@ -17,6 +18,21 @@ export class GaleriaComponent {
 
   selectedImage: string | null = null;
   imageBase64: string | null = null;
+  prediction: any
+
+  constructor(private ApiService: ApiService) {}
+
+  getDescription(img: string) {
+    this.ApiService.getDescription(img).subscribe({
+      next: (res)=>{
+        this.prediction = res
+        console.log('Descrição: ', this.prediction);
+      },
+      error: (error)=>{
+        console.error(error)
+      }
+    })
+  }
 
   // Abre a galeria ao clicar no botão
   openGallery(): void {
@@ -31,6 +47,7 @@ export class GaleriaComponent {
       const reader = new FileReader();
       reader.onload = () => {
         this.selectedImage = reader.result as string;
+        this.convertToBase64();
       };
       reader.readAsDataURL(file);
     }
@@ -41,6 +58,7 @@ export class GaleriaComponent {
     if (this.selectedImage) {
       this.imageBase64 = this.selectedImage;
       console.log('Imagem em Base64:', this.imageBase64);
+      this.getDescription(this.imageBase64);
     }
   }
 }
