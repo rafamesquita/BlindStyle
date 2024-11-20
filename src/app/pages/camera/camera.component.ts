@@ -95,14 +95,11 @@ export class CameraComponent implements AfterViewInit {
 
       // Converter o conteúdo do canvas para base64
       this.photoBase64 = canvas.toDataURL('image/png');
-      var teste = this.getDescription(this.photoBase64);
       
       console.log('Foto em Base64: ', this.photoBase64);
       video.pause();
 
-      setTimeout(() => {
-        this.modal = !this.modal
-      }, 5000);
+     this.openModal()
       
     }
   }

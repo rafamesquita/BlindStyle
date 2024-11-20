@@ -1,10 +1,23 @@
 <div class="modal-overlay">
     <div class="modal">
         <button class="close-button" onclick="closeModal()">✖</button>
-        <div class="modal-title">{{data.name}}</div>
+        <div *ngIf="!this.img" class="modal-title">{{data.name}}</div>
         <!-- Imagem convertida de Base64 -->
-        <img [src]="this.data.image_url" class="modal-image" />
+        <img [src]="this.img ? this.img : this.data.image_url" class="modal-image"/>
         <div class="modal-description">
+            {{data.description}}
+        </div>
+        <app-btn *ngIf="this.img" label="Salvar no Histórico" from="cam"></app-btn>
+        <div class="sugest" *ngIf="!this.img" (click)="this.toggleSugest();$event.stopPropagation()">
+            <span style="margin-right: 4px;">Sugestão</span>
+            <svg *ngIf="!this.toggle" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 8.5L12 16.5L20 8.5" stroke="#1A1E1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <svg *ngIf="this.toggle" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 16.5L12 8.5L20 16.5" stroke="#1A1E1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>                    
+        </div>
+        <div *ngIf="this.toggle" class="modal-description">
             {{data.description}}
         </div>
     </div>

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ModalRoupaComponent } from "../modal-roupa/modal-roupa.component";
 import { TextToSpeechService } from './../../services/text-speech/text-to-speech.service';
@@ -10,35 +10,13 @@ import { TextToSpeechService } from './../../services/text-speech/text-to-speech
   templateUrl: './roupa-hist.component.html',
   styleUrl: './roupa-hist.component.scss'
 })
-export class RoupaHistComponent implements OnInit{
+export class RoupaHistComponent {
 
   @Input() data: any
 
   modal: boolean = false
 
-  jaqueta: boolean = false
-  calca: boolean = false
-  blusa: boolean = false
-  vestido: boolean = false
-
   constructor(private ttsService: TextToSpeechService) {}
-
-  ngOnInit() {
-    switch (this.data.nome) {
-      case "jaqueta":
-        this.jaqueta = true;
-        break;
-      case "calca":
-        this.calca = true;
-        break;
-      case "blusa":
-        this.blusa = true;
-        break;
-      case "vestido":
-        this.vestido = true;
-        break;
-    }   
-  }
 
   openModal() {
     this.modal = !this.modal

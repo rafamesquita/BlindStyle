@@ -25,9 +25,12 @@
 }
   
 .descricao-texto {
-  text-align: center;
+  padding-left: 10px;
   color: black;
   font-size: 16px;
+  .name{
+    font-weight: bold;
+  }
 }
 
 .backdrop {

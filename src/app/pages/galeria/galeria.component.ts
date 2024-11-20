@@ -3,12 +3,12 @@ import { HeaderComponent } from '../../components/header/header.component';
 import { CommonModule } from '@angular/common';
 import { BtnComponent } from "../../components/btn/btn.component";
 import { ApiService } from './../../services/api.service';
-
+import { ModalRoupaComponent } from '../../components/modal-roupa/modal-roupa.component';
 
 @Component({
   selector: 'app-galeria',
   standalone: true,
-  imports: [HeaderComponent, CommonModule, BtnComponent],
+  imports: [HeaderComponent, CommonModule, BtnComponent, ModalRoupaComponent],
   templateUrl: './galeria.component.html',
   styleUrl: './galeria.component.scss'
 })
@@ -19,6 +19,7 @@ export class GaleriaComponent {
   selectedImage: string | null = null;
   imageBase64: string | null = null;
   prediction: any
+  modal: boolean = false
 
   constructor(private ApiService: ApiService) {}
 
@@ -60,6 +61,11 @@ export class GaleriaComponent {
       console.log('Imagem em Base64:', this.imageBase64);
       this.getDescription(this.imageBase64);
     }
+    this.openModal()
+  }
+
+  openModal() {
+    this.modal = !this.modal
   }
 }
 
