@@ -14,15 +14,20 @@ export class ModalRoupaComponent implements OnInit{
   @Input() data: any
   @Input() img: string | null = null
   toggle: Boolean = false
+  loading: Boolean = false
   
   constructor(private ApiService: ApiService) {}
 
   clothe: any
 
   ngOnInit(): void {
-    this.getSpecificClothe();
-    if (this.img) this.convertBase64ToJpg(this.img);
-    else this.convertBase64ToJpg(this.data.image_url);
+    if (this.img) {
+      this.convertBase64ToJpg(this.img);
+    }
+    else {
+      this.getSpecificClothe();
+      this.convertBase64ToJpg(this.data.image_url);
+    }
   }
 
   getSpecificClothe() {
@@ -30,6 +35,10 @@ export class ModalRoupaComponent implements OnInit{
       next: (res)=>{
         this.clothe = res
         console.log(this.clothe)
+        setTimeout(() => {
+          this.loading = true 
+        }, 2000);
+        
       },
       error: (error)=>{
         console.error(error)
