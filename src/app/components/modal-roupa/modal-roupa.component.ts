@@ -14,7 +14,7 @@ export class ModalRoupaComponent implements OnInit{
   @Input() data: any
   @Input() img: string | null = null
   toggle: Boolean = false
-  loading: Boolean = false
+  loading: Boolean = true
   
   constructor(private ApiService: ApiService) {}
 
@@ -36,7 +36,7 @@ export class ModalRoupaComponent implements OnInit{
         this.clothe = res
         console.log(this.clothe)
         setTimeout(() => {
-          this.loading = true 
+          this.loading = false 
         }, 2000);
         
       },
@@ -58,11 +58,25 @@ export class ModalRoupaComponent implements OnInit{
     const blob = new Blob([byteArray], { type: 'image/jpeg' });
 
     // Cria uma URL para o Blob
+    if (this.img) {
+      this.img = URL.createObjectURL(blob);
+    }
+    else {
     this.data.image_url = URL.createObjectURL(blob);
+    }
+    this.loading = false
+  }
+
+  save(){
+
   }
 
   toggleSugest(){
     this.toggle = !this.toggle
+
+    if (this.toggle = true) {
+
+    }
   }
   
 }

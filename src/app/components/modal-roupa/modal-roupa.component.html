@@ -6,7 +6,7 @@
         <div class="modal-description">
             {{data.description}}
         </div>
-        <app-btn *ngIf="this.img" label="Salvar no Histórico" from="cam"></app-btn>
+        <app-btn *ngIf="this.img" label="Salvar no Histórico" from="cam" (click)="this.save()"></app-btn>
         <div class="sugest" *ngIf="!this.img" (click)="this.toggleSugest();$event.stopPropagation()">
             <span style="margin-right: 4px;">Sugestão</span>
             <svg *ngIf="!this.toggle" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -20,7 +20,7 @@
             {{data.description}}
         </div>
     </div>
-    <div class="loading-overlay" *ngIf="!loading">
+    <div class="loading-overlay" *ngIf="loading">
         <div class="spinner"></div>
     </div>
 </div>
