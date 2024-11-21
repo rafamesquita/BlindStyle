@@ -21,11 +21,11 @@ export class BtnComponent {
   ) {}
 
   goTo(){
-    if(this.label=='Histórico')
+    if(this.label=='History')
     this.router.navigate(['/historico']);
-    if(this.label=='Câmera')
+    if(this.label=='Camera')
     this.router.navigate(['/camera']);
-    if(this.label=='Galeria')
+    if(this.label=='Gallery')
       this.router.navigate(['/galeria']);
   }
 
