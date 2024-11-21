@@ -79,7 +79,7 @@ export class ModalRoupaComponent implements OnInit{
   }
 
   save(){
-    let name =  `${this.data.predictions.certain[0]}, ${this.data.predictions.certain[1]}`
+    let name =  `${this.data.certain[0]}, ${this.data.certain[1]}`
     let description = this.data.description
     let imageUrl = this.base64
     this.ApiService.postItems(name, description, imageUrl).subscribe({
