@@ -27,11 +27,11 @@ export class ModalRoupaComponent implements OnInit{
 
   ngOnInit(): void {
     if (this.img) {
-      this.base64 = this.img
+      this.base64 = this.img.replace(/^data:image\/\w+;base64,/, '');
       this.convertBase64ToJpg(this.img);
     }
     else {
-      this.base64 = this.data.image_url
+      this.base64 = this.data.image_url.replace(/^data:image\/\w+;base64,/, '');
       this.getSpecificClothe();
       this.convertBase64ToJpg(this.data.image_url);
     }
