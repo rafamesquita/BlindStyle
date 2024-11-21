@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 import { ApiService } from './../../services/api.service';
 import { BtnComponent } from '../btn/btn.component';
 import { CommonModule } from '@angular/common';
+import { TextToSpeechService } from './../../services/text-speech/text-to-speech.service';
 
 @Component({
   selector: 'app-modal-roupa',
@@ -13,22 +14,31 @@ import { CommonModule } from '@angular/common';
 export class ModalRoupaComponent implements OnInit{
   @Input() data: any
   @Input() img: any
+  @Input() modal: boolean = true
+  @Output() close: EventEmitter<void> = new EventEmitter<void>();
   toggle: Boolean = false
   loading: Boolean = true
   suggestion: any
+  base64: any
   
-  constructor(private ApiService: ApiService) {}
+  constructor(private ApiService: ApiService, private ttsService: TextToSpeechService) {}
 
   clothe: any
 
   ngOnInit(): void {
     if (this.img) {
+      this.base64 = this.img
       this.convertBase64ToJpg(this.img);
     }
     else {
+      this.base64 = this.data.image_url
       this.getSpecificClothe();
       this.convertBase64ToJpg(this.data.image_url);
     }
+  }
+  closeModal() {
+    this.close.emit();
+    this.modal = false;
   }
 
   getSpecificClothe() {
@@ -108,4 +118,7 @@ export class ModalRoupaComponent implements OnInit{
     })
   }
   
+  onSpeak(text: string): void {
+    this.ttsService.speak(text);
+  }
 }

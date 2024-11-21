@@ -17,7 +17,7 @@
         <canvas #canvasElement style="display: none;"></canvas>
 
         <!-- Botão para tirar a foto -->
-        <app-btn label="Tirar foto" from="cam" (click)="takePhoto()"></app-btn>
+        <app-btn label="Analisar foto" from="cam" (click)="takePhoto()"></app-btn>
     </div>
 
     <!-- Mensagem de erro -->
@@ -26,6 +26,6 @@
     </div>
 </div>
 
-<div *ngIf="modal" class="backdrop" (click)="openModal();$event.stopPropagation()">
-    <app-modal-roupa [data] = "this.prediction.predictions" [img]="this.photoBase64"></app-modal-roupa>
+<div *ngIf="modal" class="backdrop">
+    <app-modal-roupa [data] = "this.prediction.predictions" [img]="this.photoBase64" [modal]=modal (close)="openModal()"></app-modal-roupa>
 </div>

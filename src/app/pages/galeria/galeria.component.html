@@ -23,6 +23,6 @@
     </div>
 </div>
 
-<div *ngIf="modal" class="backdrop" (click)="openModal();$event.stopPropagation()">
-    <app-modal-roupa [data] = "this.prediction.predictions" [img]="this.imageBase64"></app-modal-roupa>
+<div *ngIf="modal" class="backdrop">
+    <app-modal-roupa [data] = "this.prediction.predictions" [img]="this.imageBase64" [modal]=modal (close)="openModal()"></app-modal-roupa>
 </div>
