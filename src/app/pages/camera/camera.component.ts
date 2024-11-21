@@ -72,9 +72,7 @@ export class CameraComponent implements AfterViewInit {
       next: (res)=>{
         this.prediction = res
         console.log('Descrição: ', this.prediction);
-        setTimeout(() => {
           this.openModal()
-        }, 2000);
       },
       error: (error)=>{
         console.error(error)
@@ -101,6 +99,7 @@ export class CameraComponent implements AfterViewInit {
       
       console.log('Foto em Base64: ', this.photoBase64);
       video.pause();
+      this.getDescription(this.photoBase64);
       
     }
   }

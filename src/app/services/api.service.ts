@@ -43,17 +43,32 @@ export class ApiService {
   }
 
   postItems(description: string, imageUrl: string) {
+    const accessToken = this.authService.getAccessToken();
+    let headers = new HttpHeaders();
+    if (accessToken) {
+      headers = headers.set('Authorization', `Bearer ${accessToken}`);
+    }
     const payload = { description, image_url: imageUrl };
-    return this.http.post(`${this.apiUrl}/api/v1/items/create_item`, payload);
+    return this.http.post(`${this.apiUrl}/api/v1/items/create_item`, payload, { headers });
   }
   
   getSuggestion(itemId: string) {
-    return this.http.get(`${this.apiUrl}/api/v1/suggestion/get_last_suggestion/${itemId}`);
+    const accessToken = this.authService.getAccessToken();
+    let headers = new HttpHeaders();
+    if (accessToken) {
+      headers = headers.set('Authorization', `Bearer ${accessToken}`);
+    }
+    return this.http.get(`${this.apiUrl}/api/v1/suggestion/get_last_suggestion/${itemId}`, { headers });
   }
   
   postSuggestion(clothingId: string) {
+    const accessToken = this.authService.getAccessToken();
+    let headers = new HttpHeaders();
+    if (accessToken) {
+      headers = headers.set('Authorization', `Bearer ${accessToken}`);
+    }
     const payload = { clothing_id: clothingId }; // Adiciona um payload se necessário
-    return this.http.post(`${this.apiUrl}/api/v1/suggestion/suggest_item`, payload);
+    return this.http.post(`${this.apiUrl}/api/v1/suggestion/suggest_item`, payload, { headers });
   }
   
 }
