@@ -2,7 +2,11 @@
     <div class="modal">
         <button class="close-button" (click)="this.closeModal()">✖</button>
         <div *ngIf="!this.img" class="modal-title">{{data.name}}</div>
-        <img [src]="this.img ? this.img : this.data.image_url" class="modal-image"/>
+        
+        <div class="content">
+            <img [src]="this.img ? this.img : this.data.image_url" class="modal-image"/>
+        </div>
+        
         <div class="modal-description">
             <span>{{data.description}}</span>
             <div (click)="onSpeak(this.data.description);$event.stopPropagation()">
