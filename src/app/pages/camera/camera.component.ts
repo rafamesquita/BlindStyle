@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, AfterViewInit  } from '@angular/core';
+import { Component, ViewChild, ElementRef, AfterViewInit, OnDestroy  } from '@angular/core';
 import { HeaderComponent } from '../../components/header/header.component';
 import { CommonModule } from '@angular/common';
 import { BtnComponent } from "../../components/btn/btn.component";
@@ -21,7 +21,7 @@ export class CameraComponent implements AfterViewInit {
   isCameraActive = false;  // Para controlar se a câmera está ativa
   errorMessage: string | null = null;
   photoBase64: string | null = null;
-
+  loading: boolean = false
   modal: boolean = false
 
   constructor(private ApiService: ApiService) {}
@@ -73,6 +73,7 @@ export class CameraComponent implements AfterViewInit {
         this.prediction = res
         console.log('Descrição: ', this.prediction);
           this.openModal()
+          this.loading = false
       },
       error: (error)=>{
         console.error(error)
@@ -100,7 +101,7 @@ export class CameraComponent implements AfterViewInit {
       console.log('Foto em Base64: ', this.photoBase64);
       video.pause();
       this.getDescription(this.photoBase64);
-      
+      this.loading = true
     }
   }
 
@@ -108,4 +109,7 @@ export class CameraComponent implements AfterViewInit {
     this.modal = !this.modal
   }
   
+  ngOnDestroy() {
+    this.stopCamera();
+  }
 }

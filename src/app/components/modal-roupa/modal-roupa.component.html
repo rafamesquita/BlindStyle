@@ -15,7 +15,7 @@
         </div>
         
         <div *ngIf="this.img" class="btn">
-            <app-btn label="Salvar no Histórico" from="cam" (click)="this.save(this.data.description, this.base64)"></app-btn>
+            <app-btn label="Salvar no Histórico" from="cam" (click)="this.save()"></app-btn>
         </div>
         <div class="suggestion" *ngIf="!this.img" (click)="this.toggleSuggestion();$event.stopPropagation()">
             <span style="margin-right: 4px;">Sugestão</span>

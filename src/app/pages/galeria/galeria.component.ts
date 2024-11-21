@@ -20,6 +20,7 @@ export class GaleriaComponent {
   imageBase64: string | null = null;
   prediction: any
   modal: boolean = false
+  loading: boolean = false
 
   constructor(private ApiService: ApiService) {}
 
@@ -30,6 +31,7 @@ export class GaleriaComponent {
         console.log('Descrição: ', this.prediction);
         setTimeout(() => {
           this.openModal()
+          this.loading = false
         }, 2000);
       },
       error: (error)=>{
@@ -51,7 +53,6 @@ export class GaleriaComponent {
       const reader = new FileReader();
       reader.onload = () => {
         this.selectedImage = reader.result as string;
-        this.convertToBase64();
       };
       reader.readAsDataURL(file);
     }
@@ -59,6 +60,7 @@ export class GaleriaComponent {
 
   // Converte a imagem selecionada para Base64
   convertToBase64(): void {
+    this.loading = true
     if (this.selectedImage) {
       this.imageBase64 = this.selectedImage;
       console.log('Imagem em Base64:', this.imageBase64);

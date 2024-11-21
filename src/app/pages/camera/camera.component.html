@@ -24,6 +24,9 @@
     <div *ngIf="errorMessage" class="error-message">
         <p>{{ errorMessage }}</p>
     </div>
+    <div class="loading-overlay" *ngIf="loading">
+        <div class="spinner"></div>
+    </div>
 </div>
 
 <div *ngIf="modal" class="backdrop">

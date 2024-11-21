@@ -42,13 +42,13 @@ export class ApiService {
     return this.http.post(`${this.apiUrl}/api/v1/users/register_user`, payload);
   }
 
-  postItems(description: string, imageUrl: string) {
+  postItems(name: string, description: string, imageUrl: string) {
     const accessToken = this.authService.getAccessToken();
     let headers = new HttpHeaders();
     if (accessToken) {
       headers = headers.set('Authorization', `Bearer ${accessToken}`);
     }
-    const payload = { description, image_url: imageUrl };
+    const payload = { name, description, image_url: imageUrl };
     return this.http.post(`${this.apiUrl}/api/v1/items/create_item`, payload, { headers });
   }
   
