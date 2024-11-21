@@ -14,6 +14,7 @@ export class BtnComponent {
 
   @Input() label: string = ''
   @Input() from: string = ''
+  @Input() hist: string = ''
 
   constructor(
     private router: Router,
