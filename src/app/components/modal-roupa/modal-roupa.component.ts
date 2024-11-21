@@ -36,6 +36,7 @@ export class ModalRoupaComponent implements OnInit{
       this.convertBase64ToJpg(this.data.image_url);
     }
   }
+
   closeModal() {
     this.close.emit();
     this.modal = false;
@@ -89,6 +90,7 @@ export class ModalRoupaComponent implements OnInit{
         console.error(error)
       }
     })
+    this.closeModal();
   }
 
   toggleSuggestion(){
