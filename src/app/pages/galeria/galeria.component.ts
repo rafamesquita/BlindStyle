@@ -28,6 +28,9 @@ export class GaleriaComponent {
       next: (res)=>{
         this.prediction = res
         console.log('Descrição: ', this.prediction);
+        setTimeout(() => {
+          this.openModal()
+        }, 2000);
       },
       error: (error)=>{
         console.error(error)
@@ -61,7 +64,6 @@ export class GaleriaComponent {
       console.log('Imagem em Base64:', this.imageBase64);
       this.getDescription(this.imageBase64);
     }
-    this.openModal()
   }
 
   openModal() {

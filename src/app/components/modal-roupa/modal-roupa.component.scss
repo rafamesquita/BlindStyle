@@ -9,7 +9,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10; /* Z-index da modal */
+  z-index: 10;
 }
 
 /* Estilo da modal */
@@ -21,7 +21,7 @@
   padding: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: relative;
-  z-index: 20; /* Certifique-se de que a modal esteja abaixo do loading */
+  z-index: 20;
 }
 
 .modal-title {
@@ -39,10 +39,10 @@
 
 .modal-image {
   display: block;
-  margin: 0 auto; /* Centraliza a imagem */
-  max-width: 100%; /* Evita que a imagem ultrapasse os limites da modal */
+  margin: 0 auto;
+  max-width: 100%;
   height: auto;
-  margin-bottom: 20px; /* Espaço entre a imagem e a descrição */
+  margin-bottom: 20px;
 }
 
 .close-button {
@@ -57,7 +57,7 @@
   cursor: pointer;
 }
 
-.sugest {
+.suggestion {
   font-size: 20px;
   display: flex;
   align-items: center;
@@ -72,11 +72,11 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7); /* Fundo semi-transparente */
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 30; /* Z-index do loading acima da modal */
+  z-index: 30;
 }
 
 /* Spinner */

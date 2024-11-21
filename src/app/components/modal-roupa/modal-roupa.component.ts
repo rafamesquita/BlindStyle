@@ -12,9 +12,10 @@ import { CommonModule } from '@angular/common';
 })
 export class ModalRoupaComponent implements OnInit{
   @Input() data: any
-  @Input() img: string | null = null
+  @Input() img: any
   toggle: Boolean = false
   loading: Boolean = true
+  suggestion: any
   
   constructor(private ApiService: ApiService) {}
 
@@ -67,16 +68,44 @@ export class ModalRoupaComponent implements OnInit{
     this.loading = false
   }
 
-  save(){
-
+  save(description: string, imageUrl: string){
+    this.ApiService.postItems(description, imageUrl).subscribe({
+      next: (res)=>{
+      },
+      error: (error)=>{
+        console.error(error)
+      }
+    })
   }
 
-  toggleSugest(){
+  toggleSuggestion(){
     this.toggle = !this.toggle
 
     if (this.toggle = true) {
-
+      this.getSuggestion(this.data.id)
     }
+  }
+
+  getSuggestion(itemId: string) {
+    this.ApiService.getSuggestion(itemId).subscribe({
+      next: (res)=>{
+        this.suggestion = res
+      },
+      error: (error)=>{
+        this.postSuggestion(itemId)
+      }
+    })
+  }
+
+  postSuggestion(itemId: string) {
+    this.ApiService.getSuggestion(itemId).subscribe({
+      next: (res)=>{
+        this.getSuggestion(itemId)
+      },
+      error: (error)=>{
+        console.error(error)
+      }
+    })
   }
   
 }

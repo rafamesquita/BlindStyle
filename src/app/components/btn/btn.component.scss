@@ -49,9 +49,9 @@
     padding: 10px 20px;
     margin-bottom: 20px;
     font-size: 20px;
-    display: flex; /* Garante alinhamento horizontal com o ícone */
-    flex: 1; /* Ocupa o máximo possível do espaço */
-    justify-content: space-between; /* Mantém o botão e ícone afastados */
+    display: flex;
+    flex: 1;
+    justify-content: center;
   }
 
   &:hover {

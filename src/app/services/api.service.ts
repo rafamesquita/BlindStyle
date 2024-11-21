@@ -14,7 +14,6 @@ export class ApiService {
     private authService: AuthService
   ) {}
 
-  //Serviço para pegar as roupas salvas
   getClothes() {
     const accessToken = this.authService.getAccessToken();
     let headers = new HttpHeaders();
@@ -42,4 +41,19 @@ export class ApiService {
     const payload = { username: username, password: password}
     return this.http.post(`${this.apiUrl}/api/v1/users/register_user`, payload);
   }
+
+  postItems(description: string, imageUrl: string) {
+    const payload = { description, image_url: imageUrl };
+    return this.http.post(`${this.apiUrl}/api/v1/items/create_item`, payload);
+  }
+  
+  getSuggestion(itemId: string) {
+    return this.http.get(`${this.apiUrl}/api/v1/suggestion/get_last_suggestion/${itemId}`);
+  }
+  
+  postSuggestion(clothingId: string) {
+    const payload = { clothing_id: clothingId }; // Adiciona um payload se necessário
+    return this.http.post(`${this.apiUrl}/api/v1/suggestion/suggest_item`, payload);
+  }
+  
 }
