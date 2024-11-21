@@ -111,7 +111,7 @@ export class ModalRoupaComponent implements OnInit{
   }
 
   postSuggestion(itemId: string) {
-    this.ApiService.getSuggestion(itemId).subscribe({
+    this.ApiService.postSuggestion(itemId).subscribe({
       next: (res)=>{
         this.getSuggestion(itemId)
       },
