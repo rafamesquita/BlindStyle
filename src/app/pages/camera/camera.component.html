@@ -1,25 +1,34 @@
+<app-header title="Camera"></app-header>
 <div class="camera">
-    <div class="header">
-        <app-header title="Câmera"></app-header>
-    </div>
-
     <div class="main-content">
         <div class="instructions">
-            <p>Basta clicar no botão abaixo para habilitar a câmera!</p>
             <!-- Botão para solicitar acesso à câmera -->
-            <button (click)="startCamera()">Solicitar Acesso à Câmera</button>
+            <app-btn label="Request Camera Access" from="cam" (click)="startCamera()"></app-btn>
             <!-- Botão para desligar a câmera -->
-            <button (click)="stopCamera()">Desligar a Câmera</button>
+            <app-btn label="Turn Off the Camera" from="cam" (click)="stopCamera()"></app-btn>
         </div>
 
         <!-- Vídeo -->
-        <div class="content" *ngIf="isCameraActive">
-            <video #videoElement width="95%" height="95%" autoplay></video>
+        <div class="content">
+            <video #videoElement width="100%" height="100%" autoplay></video>
         </div>
+
+        <!-- Canvas para capturar o quadro do vídeo -->
+        <canvas #canvasElement style="display: none;"></canvas>
+
+        <!-- Botão para tirar a foto -->
+        <app-btn label="Analyze photo" from="cam" (click)="takePhoto()"></app-btn>
     </div>
 
     <!-- Mensagem de erro -->
     <div *ngIf="errorMessage" class="error-message">
         <p>{{ errorMessage }}</p>
     </div>
+    <div class="loading-overlay" *ngIf="loading">
+        <div class="spinner"></div>
+    </div>
+</div>
+
+<div *ngIf="modal" class="backdrop">
+    <app-modal-roupa [data] = "this.prediction.predictions" [img]="this.photoBase64" [modal]=modal (close)="openModal()"></app-modal-roupa>
 </div>

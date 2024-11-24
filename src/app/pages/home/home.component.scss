@@ -6,18 +6,8 @@
     align-items: center;
     background: linear-gradient(to bottom, #808080, #000000);
 
-    @media (max-width: 600px) {
+    @media (max-width: 915px) {
         flex-direction: column;
         align-items: center;
     }
-}
-
-.header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-    background-color: transparent;
 }

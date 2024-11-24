@@ -1,38 +1,27 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ModalRoupaComponent } from "../modal-roupa/modal-roupa.component";
+import { TextToSpeechService } from './../../services/text-speech/text-to-speech.service';
 
 @Component({
   selector: 'app-roupa-hist',
   standalone: true,
-  imports: [CommonModule ],
+  imports: [CommonModule, ModalRoupaComponent],
   templateUrl: './roupa-hist.component.html',
   styleUrl: './roupa-hist.component.scss'
 })
-export class RoupaHistComponent implements OnInit{
+export class RoupaHistComponent {
 
   @Input() data: any
-  jaqueta: boolean = false
-  calca: boolean = false
-  blusa: boolean = false
-  vestido: boolean = false
 
-  ngOnInit() {
-    switch (this.data.nome) {
-      case "jaqueta":
-        this.jaqueta = true;
-        break;
-      case "calca":
-        this.calca = true;
-        break;
-      case "blusa":
-        this.blusa = true;
-        break;
-      case "vestido":
-        this.vestido = true;
-        break;
-    }   
+  modal: boolean = false
+
+  constructor(private ttsService: TextToSpeechService) {}
+
+  openModal() {
+    this.modal = !this.modal
   }
-
+  
   openImg(base64: string, contentType: string = 'image/jpg') {
     const byteCharacters = atob(base64);
     const byteNumbers = Array.from(byteCharacters).map(char => char.charCodeAt(0));
@@ -54,5 +43,9 @@ export class RoupaHistComponent implements OnInit{
     } else {
         console.error("Elemento com ID 'imageContainer' não encontrado.");
     }
+  }
+
+  onSpeak(text: string): void {
+    this.ttsService.speak(text);
   }
 }

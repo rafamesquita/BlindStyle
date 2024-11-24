@@ -1,7 +1,5 @@
+<app-header title="BlindStyle"></app-header>
 <div class="login">
-    <div class="header">
-        <app-header title="BlindStyle"></app-header>
-    </div>
     <div class="container">
         <div class="title">
             <svg width="34px" height="34px" viewBox="-4.8 -4.8 33.60 33.60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000" transform="matrix(1, 0, 0, 1, 0, 0)rotate(0)">
@@ -10,15 +8,13 @@
             <h1>Login</h1>
         </div>
         <form (ngSubmit)="home()">
-            <input type="text" placeholder="Nome de usuário" [(ngModel)]="username" name="username" required>
-            <input type="password" placeholder="Senha" [(ngModel)]="password" name="password" required>
-            <button (click)="home()" type="submit">Entrar</button>
+            <input type="text" placeholder="Username" [(ngModel)]="username" name="username" required>
+            <input type="password" placeholder="Password" [(ngModel)]="password" name="password" required>
+            <button (click)="home()" type="submit">Enter</button>
         </form>
         <div class="error-message">
             <p>{{ errorMessage }}</p> 
           </div>
     </div>
-    <div class="footer">
-        <app-footer></app-footer>
-    </div>
 </div>
+<app-footer></app-footer>

@@ -1,0 +1,31 @@
+<app-header title="Gallery"></app-header>
+<div class="galeria">
+    <div class="main-content">
+        <div class="instructions">
+            <!-- Botão para solicitar acesso a galeria -->
+            <app-btn label="Request Gallery Access" from="cam" (click)="openGallery()"></app-btn>
+        </div>
+
+        <input
+        type="file"
+        #fileInput
+        (change)="onFileSelected($event)"
+        accept="image/*"
+        style="display: none;"/>
+
+        <!-- Foto -->
+        <div class="content">
+            <img [src]="selectedImage" width="300"/>
+        </div>
+
+        <!-- Botão para enviar a foto -->
+        <app-btn label="Send photo" from="cam" (click)="convertToBase64()"></app-btn>
+    </div>
+    <div class="loading-overlay" *ngIf="loading">
+        <div class="spinner"></div>
+    </div>
+</div>
+
+<div *ngIf="modal" class="backdrop">
+    <app-modal-roupa [data] = "this.prediction.predictions" [img]="this.imageBase64" [modal]=modal (close)="openModal()"></app-modal-roupa>
+</div>

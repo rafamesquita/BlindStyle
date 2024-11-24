@@ -1,4 +1,4 @@
-.camera {
+.galeria {
     background-color: #b1afaf;
     flex: 1 1 auto;
     height: 100vh;
@@ -47,25 +47,6 @@ video {
     height: 100%;
 }
 
-.error-message {
-    color: red;
-    margin-top: 20px;
-    text-align: center;
-}
-
-.backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro semi-transparente */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-
 /* Overlay de Loading */
 .loading-overlay {
     position: absolute;
@@ -89,7 +70,7 @@ video {
     border-radius: 50%;
     animation: spin 1s linear infinite;
   }
-
+  
 @media (max-width: 375px) {
     .content {
         width: 200px; 

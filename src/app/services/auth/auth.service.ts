@@ -12,7 +12,9 @@ export class AuthService {
   private apiUrl = `${environment.apiUrl}/api/v1/users`;
   private refreshTokenUrl = `${this.apiUrl}/refresh_token`;
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+  ) {}
 
   login(username: string, password: string): Observable<any> {
     return this.http
